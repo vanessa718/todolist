@@ -1,0 +1,64 @@
+/*************/
+/*   RESET   */
+/*************/
+body, h1, h2, h3, h4{
+	margin: 0;
+}
+
+
+/*************/
+/*   GLOBAL  */
+/*************/
+html{
+	font:62.5% "Open Sans", arial, sans-serif;
+	color: #323232;
+	background: #eee;
+}
+body{
+	font-size: 1.5rem;
+}
+
+/*************/
+/*   HEADER  */
+/*************/
+.site-header{
+	padding: 20px; /*espace intérieur*/
+	color: #fff;
+	text-align: center;
+	background-color: #e30035;
+}
+.site-header h1{/*je prends les h1 enfants de site-header*/
+	font-family: 'Pacifico', arial, sans-serif;
+	font-size: 3rem;
+	font-weight: normal;
+}
+/*************/
+/*    MAIN   */
+/*************/
+.site-main{
+	display: flex;
+	margin: auto;
+	padding: 20px;
+	max-width: 950px;
+}
+.categories-list,.tasks-list{
+	padding: 20px;
+	background: #fff;
+}
+.categories-list{
+	margin-right: 20px;
+	width: 200px;
+}
+.tasks-list{
+	flex: 1;
+
+}
+
+/*************/
+/*   FOOTER  */
+/*************/
+.site-footer{
+	padding: 20px;
+	text-align: center;
+	font-style: italic;
+}
