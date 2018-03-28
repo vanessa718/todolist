@@ -1,10 +1,13 @@
 /*************/
 /*   RESET   */
 /*************/
-body, h1, h2, h3, h4{
+body, h1, h2, h3, h4, ul{
 	margin: 0;
 }
-
+ul{
+	padding: 0;
+	list-style: none;
+}
 
 /*************/
 /*   GLOBAL  */
@@ -25,7 +28,7 @@ body{
 	padding: 20px; /*espace intérieur*/
 	color: #fff;
 	text-align: center;
-	background-color: #e30035;
+	background-color: #e30045;
 }
 .site-header h1{/*je prends les h1 enfants de site-header*/
 	font-family: 'Pacifico', arial, sans-serif;
@@ -54,6 +57,108 @@ body{
 
 }
 
+/*  Categories  */
+.cat-list li:nth-child(n+2){
+	border-top: 1px solid #eee; 
+}
+.category{
+	display: block;
+	padding: 10px;
+	color: #323232;
+	text-decoration: none;
+}
+.category::before {
+	content: '';
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	border: 1px solid #323232;
+	width: 20px;
+	height: 20px;
+	background: #e30045;
+	border-radius: 50%;
+}
+.cat-default::before {
+	border-width: 3px;
+}
+.cat-default {
+	font-weight: bold;
+}
+.category:hover {/* un lien est en display */
+	background: rgba(238,238,238,.3);	
+}
+.category:hover::before {
+	box-shadow: inset 0 0 0 2px #fff;	
+}
+.color-pink::before {
+	background: #e300ab;
+}
+.color-blue::before {
+	background: #0089e3;
+}
+.color-orange::before {
+	background: #e39100;
+}
+.color-green::before {
+	background: #00e39d;
+}
+.color-grey::before {
+	background: #717171;
+}
+.add-item {
+	border: 0;
+	padding: 0;
+	font-size: 1.2rem;
+	color: #e30045;
+	text-decoration: underline;
+	cursor: pointer;
+	-webkit-appearance: none;
+	background: none;
+}
+.add-item::before {
+	content: '+';
+	font-size: 1.4em;
+}
+.add-item:hover {
+	text-decoration: none;
+}
+/* Form */
+.form-label abbr{
+	color:#e30045;
+	text-decoration: none;
+}
+.form-field {
+	box-sizing: border-box;
+	border: 1px solid #eee;
+	padding: 0 10px;
+	width: 100%;
+	height: 40px;
+	font-size: 1.2rem;
+	background: #fff;
+	outline: none;/*dégradé qui apparaît lorsque l'on ale focus sur l'élément*/
+}
+.form-btn {
+	display: block;
+	margin-top: 10px;
+	margin-left: auto;
+	border: 0;
+	padding: 10px;
+	font-size: 1.2rem;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 3px;
+	-webkit-appearance:none;
+	background: #e30045;
+	transition: all ease-in .2s;
+}
+.form-btn:hover {
+	transform: scale(1.1);
+}
+.form-btn::active {
+	background: #323232;
+}
+
 /*************/
 /*   FOOTER  */
 /*************/
@@ -61,4 +166,7 @@ body{
 	padding: 20px;
 	text-align: center;
 	font-style: italic;
+}
+.site-footer a{
+	color: #e30045;
 }
