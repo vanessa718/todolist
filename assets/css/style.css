@@ -20,6 +20,16 @@ html{
 body{
 	font-size: 1.5rem;
 }
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?cqdf51');
+  src:  url('../fonts/icomoon.eot?cqdf51#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?cqdf51') format('truetype'),
+    url('../fonts/icomoon.woff?cqdf51') format('woff'),
+    url('../fonts/icomoon.svg?cqdf51#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /*************/
 /*   HEADER  */
@@ -91,19 +101,19 @@ body{
 .category:hover::before {
 	box-shadow: inset 0 0 0 2px #fff;	
 }
-.color-pink::before {
+.color-pink::before, .task-cat.color-pink {
 	background: #e300ab;
 }
-.color-blue::before {
+.color-blue::before, .task-cat.color-blue {
 	background: #0089e3;
 }
-.color-orange::before {
+.color-orange::before, .task-cat.color-orange {
 	background: #e39100;
 }
-.color-green::before {
+.color-green::before, .task-cat.color-green {
 	background: #00e39d;
 }
-.color-grey::before {
+.color-grey::before, .task-cat.color-grey {
 	background: #717171;
 }
 .add-item {
@@ -124,6 +134,17 @@ body{
 	text-decoration: none;
 }
 /* Form */
+.form-blocks {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.form-block {
+	width: calc(50% - 10px);
+}
+.form-block.dbl {
+	width: 100%;
+}
 .form-label abbr{
 	color:#e30045;
 	text-decoration: none;
@@ -136,7 +157,7 @@ body{
 	height: 40px;
 	font-size: 1.2rem;
 	background: #fff;
-	outline: none;/*dégradé qui apparaît lorsque l'on ale focus sur l'élément*/
+	outline: none;/*dégradé qui apparaît lorsque l'on a le focus sur l'élément*/
 }
 .form-btn {
 	display: block;
@@ -158,7 +179,81 @@ body{
 .form-btn::active {
 	background: #323232;
 }
-
+/* Tasks  */
+.tasks {
+	margin-bottom: 20px;
+}
+.task {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px 10px 10px 40px;
+	border-bottom: 1px solid #eee;
+	cursor: pointer; 
+	transition: all ease-in .2s;
+}
+.task:hover {
+	background: rgba(0,0,0,.05);
+}
+[type=checkbox]:checked + .task-label::before  {
+	content: "\ea10";
+}
+.task [type=checkbox] {
+	display: none;
+}
+.task-label {
+	margin-bottom: 10px;
+	width: 100%;
+	font-size: 1.8rem;
+}
+.task-label::before {
+	content: '';
+	position: absolute;
+	top: 12px;
+	left: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	border: 1px solid #aaa;
+	width: 20px;
+	height: 20px;
+	font-family: icomoon;
+	font-size: .8em;
+	color: #00e31d;
+	border-radius: 50%;
+}
+.task-cat {
+	display: inline-block;
+	padding: 2px;
+	font-size: 1.2rem;
+	color: #fff;
+	border-radius: 2px;
+	background: #e30045;
+}
+.task-priority {
+	margin: 0 10px;
+}
+.task-priority::before {
+	content: "\e9cc";
+	font-family: icomoon;
+}
+.p-low::before {
+	color: #eee;
+}
+.p-standard::before {
+	color: #e39100;
+}
+.p-high::before {
+	color: #e30045;
+}
+.task-date {
+	margin-left: auto;
+}
+.task-date::before {
+	content: "\e953";
+	font-family: icomoon;
+	color: #aaa;
+}
 /*************/
 /*   FOOTER  */
 /*************/
