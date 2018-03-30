@@ -1,23 +1,23 @@
 /*************/
 /*   RESET   */
 /*************/
-body, h1, h2, h3, h4, ul{
+body, h1, h2, h3, h4, ul {
 	margin: 0;
 }
-ul{
+ul {
 	padding: 0;
 	list-style: none;
 }
 
-/*************/
-/*   GLOBAL  */
-/*************/
-html{
-	font:62.5% "Open Sans", arial, sans-serif;
+/**************/
+/*   GLOBAL   */
+/**************/
+html {
+	font: 62.5% "Open sans", arial, sans-serif;
 	color: #323232;
 	background: #eee;
 }
-body{
+body {
 	font-size: 1.5rem;
 }
 @font-face {
@@ -31,53 +31,47 @@ body{
   font-style: normal;
 }
 
-/*************/
-/*   HEADER  */
-/*************/
-.site-header{
-	padding: 20px; /*espace intérieur*/
+/**************/
+/*   HEADER   */
+/**************/
+.site-header {
+	padding: 20px;
 	color: #fff;
 	text-align: center;
-	background-color: #e30045;
+	background: #e30045;
 }
-.site-header h1{/*je prends les h1 enfants de site-header*/
+.site-header h1 {
 	font-family: 'Pacifico', arial, sans-serif;
 	font-size: 3rem;
 	font-weight: normal;
 }
-/*************/
-/*    MAIN   */
-/*************/
-.site-main{
-	display: flex;
+
+
+/**************/
+/*   MAIN     */
+/**************/
+.site-main {
 	margin: auto;
 	padding: 20px;
-	max-width: 950px;
+	max-width: 960px;
 }
-.categories-list,.tasks-list{
+.categories-list, .tasks-list {
 	padding: 20px;
 	background: #fff;
 }
-.categories-list{
-	margin-right: 20px;
-	width: 200px;
-}
-.tasks-list{
-	flex: 1;
 
-}
 
-/*  Categories  */
-.cat-list li:nth-child(n+2){
-	border-top: 1px solid #eee; 
+/* Categories */
+.cat-list li:nth-child(n+2) {
+	border-top: 1px solid #eee;
 }
-.category{
+.category {
 	display: block;
 	padding: 10px;
 	color: #323232;
 	text-decoration: none;
 }
-.category::before {
+.category[class*="color-"]::before {
 	content: '';
 	box-sizing: border-box;
 	display: inline-block;
@@ -86,20 +80,22 @@ body{
 	border: 1px solid #323232;
 	width: 20px;
 	height: 20px;
-	background: #e30045;
 	border-radius: 50%;
 }
-.cat-default::before {
+.category.active::before {
 	border-width: 3px;
 }
-.cat-default {
+.category.active {
 	font-weight: bold;
 }
-.category:hover {/* un lien est en display */
-	background: rgba(238,238,238,.3);	
+.category:hover {
+	background: rgba(238,238,238,.3);
 }
 .category:hover::before {
-	box-shadow: inset 0 0 0 2px #fff;	
+	box-shadow: inset 0 0 0 2px #fff;
+}
+.color-red::before, .task-cat.color-red {
+	background: #e30045;
 }
 .color-pink::before, .task-cat.color-pink {
 	background: #e300ab;
@@ -116,7 +112,8 @@ body{
 .color-grey::before, .task-cat.color-grey {
 	background: #717171;
 }
-.add-item {
+
+.add-item, .delete-item {
 	border: 0;
 	padding: 0;
 	font-size: 1.2rem;
@@ -125,61 +122,24 @@ body{
 	cursor: pointer;
 	-webkit-appearance: none;
 	background: none;
+	outline: none;
 }
 .add-item::before {
-	content: '+';
+	content: '+ ';
 	font-size: 1.4em;
 }
-.add-item:hover {
+.delete-item::before {
+	content: '- ';
+	font-size: 1.4em;
+}
+.add-item:hover, .delete-item:hover {
 	text-decoration: none;
 }
-/* Form */
-.form-blocks {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+.view-item {
+	display: none;
 }
-.form-block {
-	width: calc(50% - 10px);
-}
-.form-block.dbl {
-	width: 100%;
-}
-.form-label abbr{
-	color:#e30045;
-	text-decoration: none;
-}
-.form-field {
-	box-sizing: border-box;
-	border: 1px solid #eee;
-	padding: 0 10px;
-	width: 100%;
-	height: 40px;
-	font-size: 1.2rem;
-	background: #fff;
-	outline: none;/*dégradé qui apparaît lorsque l'on a le focus sur l'élément*/
-}
-.form-btn {
-	display: block;
-	margin-top: 10px;
-	margin-left: auto;
-	border: 0;
-	padding: 10px;
-	font-size: 1.2rem;
-	color: #fff;
-	cursor: pointer;
-	border-radius: 3px;
-	-webkit-appearance:none;
-	background: #e30045;
-	transition: all ease-in .2s;
-}
-.form-btn:hover {
-	transform: scale(1.1);
-}
-.form-btn::active {
-	background: #323232;
-}
-/* Tasks  */
+
+/* Tasks */
 .tasks {
 	margin-bottom: 20px;
 }
@@ -189,7 +149,7 @@ body{
 	flex-wrap: wrap;
 	padding: 10px 10px 10px 40px;
 	border-bottom: 1px solid #eee;
-	cursor: pointer; 
+	cursor: pointer;
 	transition: all ease-in .2s;
 }
 .task:hover {
@@ -230,20 +190,17 @@ body{
 	border-radius: 2px;
 	background: #e30045;
 }
-.task-priority {
-	margin: 0 10px;
-}
 .task-priority::before {
 	content: "\e9cc";
 	font-family: icomoon;
 }
-.p-low::before {
+.p-1::before {
 	color: #eee;
 }
-.p-standard::before {
+.p-2::before {
 	color: #e39100;
 }
-.p-high::before {
+.p-3::before {
 	color: #e30045;
 }
 .task-date {
@@ -254,14 +211,102 @@ body{
 	font-family: icomoon;
 	color: #aaa;
 }
-/*************/
-/*   FOOTER  */
-/*************/
-.site-footer{
+
+/* Form */
+.form-label {
+	display: block;
+	margin: 10px 0 5px;
+	font-weight: bold;
+	font-size: 1.4rem;
+}
+.form-label abbr {
+	color: #e30045;
+	text-decoration: none;
+}
+.form-field {
+	box-sizing: border-box;
+	border: 1px solid #eee;
+	padding: 0 10px;
+	width: 100%;
+	height: 40px;
+	font-size: 1.2rem;
+	background: #fff;
+}
+.form-btn {
+	display: block;
+	margin-top: 10px;
+	margin-left: auto;
+	border: 0;
+	padding: 10px;
+	font-size: 1.2rem;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 3px;
+	-webkit-appearance: none;
+	background: #e30045;
+	transition: all ease-in .2s;
+}
+.form-btn:hover {
+	transform: scale(1.1);
+}
+.form-btn:active {
+	background: #323232;
+}
+
+/**************/
+/*   FOOTER   */
+/**************/
+.site-footer {
 	padding: 20px;
 	text-align: center;
 	font-style: italic;
 }
-.site-footer a{
+.site-footer a {
 	color: #e30045;
+}
+
+
+/**************/
+/*   MEDIAS   */
+/**************/
+@media (max-width: 499px) {
+	.task {
+		flex-direction: column;
+	}
+	.task-priority {
+		margin: 10px 0;
+	}
+}
+@media (min-width: 500px) {
+	.task-priority {
+		margin: 0 10px;
+	}
+	.form-blocks {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	} 
+	.form-block {
+		width: calc(50% - 10px);
+	}
+	.form-block.dbl {
+		width: 100%;
+	}
+}
+@media (max-width: 699px) {
+	.categories-list {
+		margin-bottom: 20px;
+	}
+}
+@media (min-width: 700px) {
+	.site-main {
+		display: flex;
+	}
+	.categories-list {
+		margin-right: 20px;
+		width: 200px;
+	}
+	.tasks-list {
+		flex: 1;
+	}
 }
